@@ -1,57 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Inventory Dashboard - Sold & Store Items with Keywords</title>
-<style>
-  body { font-family: Arial, sans-serif; background: #f5f5f5; }
-  h1, h2 { margin-bottom: 10px; }
-  select, input { padding: 8px; margin: 10px 5px 20px 0; font-size: 16px; }
-  table { width: 100%; border-collapse: collapse; background: white; margin-bottom: 40px;}
-  th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
-  th { background-color: #333; color: white; }
-
-  /* Loader styles */
-  #loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-weight: bold;
-    color: #444;
-    margin: 20px 0;
-  }
-
-  .loader {
-    display: flex;
-    gap: 5px;
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-    background-color: #4CAF50;
-    border-radius: 50%;
-    animation: bounce 1s infinite ease-in-out;
-  }
-
-  .dot:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .dot:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-
-  @keyframes bounce {
-    0%, 80%, 100% {
-      transform: translateY(0);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inventory Dashboard - Sold & Store Items with Keywords</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; }
+    h1, h2 { margin-bottom: 10px; }
+    select, input { padding: 8px; margin: 10px 5px 20px 0; font-size: 16px; }
+    
+    /* Wrapper to handle horizontal scrolling */
+    .table-wrapper {
+      overflow-x: auto; /* Enables horizontal scrolling if needed */
+      width: 100%; /* Full width */
     }
-    40% {
-      transform: translateY(-12px);
+
+    /* Table styling */
+    table {
+      width: 100%; 
+      border-collapse: collapse;
+      background: white;
+      margin-bottom: 40px;
+      table-layout: fixed; /* Prevents table from expanding */
     }
-  }
-</style>
+    th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+    th { background-color: #333; color: white; }
+
+    /* Loader styles */
+    #loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #484;
+      margin: 20px 0;
+    }
+    .loader {
+      display: flex;
+      gap: 5px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      animation: bounce 1s infinite ease-in-out;
+    }
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-12px);
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -75,24 +85,36 @@
 </div>
 
 <h2>Store Items (Remaining Quantity)</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Item Name</th><th>Price</th><th>Quantity In Store</th><th>Status</th><th>Type</th>
-    </tr>
-  </thead>
-  <tbody id="tableBodyStore"></tbody>
-</table>
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Item Name or Code</th>
+        <th>Price</th>
+        <th>Quantity In Store</th>
+        <th>Status</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody id="tableBodyStore"></tbody>
+  </table>
+</div>
 
 <h2>Sell Items (Sold Quantity)</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Item Name</th><th>Price</th><th>Quantity Sold</th><th>Status</th><th>Type</th>
-    </tr>
-  </thead>
-  <tbody id="tableBodySell"></tbody>
-</table>
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Item Name or Code</th>
+        <th>Price</th>
+        <th>Quantity Sold</th>
+        <th>Status</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody id="tableBodySell"></tbody>
+  </table>
+</div>
 
 <script>
 const SHEET_URL = "https://docs.google.com/spreadsheets/d/1v1EvjD8dJaip7Liey97Gc_0SQ7ijAW22CQa2Ero4DKs/gviz/tq?tqx=out:json";
