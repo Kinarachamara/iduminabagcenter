@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Daily Report with RDB and In-shop Expenses</title>
+  <title>Daily Report </title>
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.5.25/dist/jspdf.plugin.autotable.min.js"></script>
   <style>
@@ -128,10 +128,19 @@
 
   <div id="loader">⏳ Loading...</div>
 
-  <h1 style="display:none;">Daily Sales and Expenses Report</h1>
+  <h1 style="display:none;">Daily Sales Report</h1>
 
   <label for="day" style="display:none;">Select Date:</label>
-  <select id="day" style="display:none;"></select>
+  <select id="day" style="display:none;  width: 220px;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: linear-gradient(135deg, #ffffff, #f0f4ff);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: all 0.35s ease;"></select>
 
   <button onclick="openFormPopup()" style="
       margin: 15px 0;
